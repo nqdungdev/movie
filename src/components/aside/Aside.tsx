@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Button from "../common/button/Button";
 import AsideTitle from "./AsideTitle";
@@ -30,7 +31,7 @@ const Aside = (props: Props) => {
         </p>
         <Button>
           <p>
-            Xem Anime <strong>Ngẫu Nhiên</strong>
+            Xem Film <strong>Ngẫu Nhiên</strong>
           </p>
         </Button>
       </section>

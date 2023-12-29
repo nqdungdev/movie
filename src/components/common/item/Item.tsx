@@ -9,16 +9,18 @@ type Props = {
 const Item = ({ movie }: Props) => {
   return (
     <article id={movie.id} className="relative w-full group">
-      <Link href="">
-        <div className="relative mb-3 w-full h-[245px] rounded-md overflow-hidden">
-          <Image
-            fill
-            sizes="20vw"
-            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-            alt={movie.title}
-            title={movie.title}
-            style={{ objectFit: "cover" }}
-          />
+      <Link href={`/movie/${movie.id}`}>
+        <div className="mb-3 rounded-md overflow-hidden">
+          <figure className="relative w-full h-[245px]">
+            <Image
+              fill
+              sizes="20vw"
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              alt={movie.title}
+              title={movie.title}
+              style={{ objectFit: "cover" }}
+            />
+          </figure>
 
           <div className="absolute top-0 left-0">
             <div

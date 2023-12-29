@@ -47,18 +47,20 @@ const Carousel = () => {
                     : "hidden animate-fadeOut"
                 }`}
               >
-                <Image
-                  fill
-                  sizes="80vw"
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  alt={movie.title}
-                  title={movie.title}
-                  style={{ objectFit: "cover" }}
-                  priority
-                />
+                <figure className="relative w-full h-full">
+                  <Image
+                    fill
+                    sizes="80vw"
+                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                    alt={movie.title}
+                    title={movie.title}
+                    style={{ objectFit: "cover" }}
+                    priority
+                  />
+                </figure>
                 <div className="absolute top-0 left-0 w-1/2 min-w-[450px] h-full p-5 bg-black/40">
                   <Link
-                    href=""
+                    href={`/movie/${movie.id}`}
                     className="mb-3 font-semibold text-white text-3xl"
                   >
                     {movie.title}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import Container from "../common/container/Container";
+import SearchBox from "./SearchBox";
 type Props = {};
 
 const Header = (props: Props) => {
@@ -24,24 +25,7 @@ const Header = (props: Props) => {
           </nav>
         </div>
 
-        <div className="relative w-[230px] h-full flex items-center">
-          <button className="absolute top-0 left-0 w-10 h-full flex justify-center items-center z-10 opacity-50">
-            <FaSearch size="1em" className="text-[#78909c]" />
-          </button>
-          <form>
-            <label className="text-[#78909c]">
-              <input
-                type="text"
-                name="keyword"
-                placeholder="Tìm kiếm"
-                className="bg-black/60 border-[#263238] border-solid border rounded pl-10 text-sm font-semibold opacity-50 focus:bg-black/40 focus:opacity-100 focus:outline-none h-10"
-              />
-            </label>
-          </form>
-          <div className="search-suggest" style={{ display: "none" }}>
-            <ul style={{ marginBottom: 0 }} id="search-suggest-list" />
-          </div>
-        </div>
+        <SearchBox />
       </Container>
     </header>
   );
