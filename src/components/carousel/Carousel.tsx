@@ -76,7 +76,7 @@ const Carousel = () => {
                       {movie.release_date}
                     </span>
                   </p>
-                  <p className="text-xs text-white line-lamp-2 mb-3">
+                  <p className="text-xs text-white mb-3 line-clamp-[10]">
                     {movie.overview}
                   </p>
 

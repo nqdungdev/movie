@@ -12,8 +12,8 @@ const Aside = (props: Props) => {
   const LIMIT = 9;
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
-  const { data: popular } = useSWR(
-    `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/popular?language=vi&page=1&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+  const { data: now_playing } = useSWR(
+    `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/now_playing?language=vi&page=1&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
   const { data: top_rated } = useSWR(
@@ -38,7 +38,7 @@ const Aside = (props: Props) => {
       <section className="p-3 mb-5 bg-[#696969]/10 rounded-md">
         <AsideTitle className="uppercase">Film mới cập nhật</AsideTitle>
         <ul>
-          {popular?.results.map(
+          {now_playing?.results.map(
             (movie: any, index: number) =>
               index <= LIMIT && (
                 <li
@@ -46,14 +46,14 @@ const Aside = (props: Props) => {
                   className="hover:border-l-[#be3232] hover:border-l-4 border-solid group border-b border-b-[#171515] p-1"
                 >
                   <Link
-                    href=""
+                    href={`/movie/${movie.id}`}
                     title={movie.title}
                     className="flex justify-between items-center"
                   >
-                    <span className="text-[#ce9090] w-3/4 text-ellipsis overflow-hidden whitespace-nowrap group-hover:text-white p-1">
+                    <span className="text-[#ce9090] text-sm w-[70%] text-ellipsis overflow-hidden whitespace-nowrap group-hover:text-white p-1">
                       {movie.title}
                     </span>
-                    <span className="text-[#5f5f5f] italic text-right w-1/4 text-sm">
+                    <span className="text-[#5f5f5f] italic text-right w-1/4 text-xs text-nowrap">
                       {movie.release_date}
                     </span>
                   </Link>

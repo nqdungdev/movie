@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/common/button/Button";
+import Skeleton from "@/components/common/skeleton/Skeleton";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React from "react";
@@ -18,7 +19,7 @@ const Movie = (props: Props) => {
     fetcher
   );
   console.log(movie);
-  if (isLoading) return;
+  if (isLoading) return <Skeleton number={1} />;
   return (
     <main className="pr-5 w-full table-cell align-top">
       <article className="relative w-full h-56 md:h-96">

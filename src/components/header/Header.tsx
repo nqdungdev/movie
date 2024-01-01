@@ -7,10 +7,16 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="h-[60px] bg-black/60">
+    <header className="h-[60px] bg-black/60" id="header">
       <Container className="flex items-center justify-between py-0">
         <div className="flex items-center">
-          <div className="mr-8">Logo</div>
+          <div className="mr-8">
+            <Link href="/">
+              <p className="font-kolker text-5xl bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-sky-600">
+                Film
+              </p>
+            </Link>
+          </div>
           <nav>
             <ul className="flex items-center">
               {["trang chủ", "movie", "tivi show"].map((item, index) => (

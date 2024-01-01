@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        barlow: ['"Barlow Condensed"', "sans-serif"],
+        kolker: ['"Kolker Brush"', "sans-serif"],
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -17,7 +22,7 @@ const config: Config = {
         primary: "#333333",
         secondary: "#e62117",
         accent: {
-          yellow: "",
+          yellow: "#f5ec42",
           red: "#e62117",
           green: "#b5e745",
         },

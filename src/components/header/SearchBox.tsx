@@ -26,14 +26,6 @@ const SearchBox = (props: Props) => {
   );
 
   const { push } = useRouter();
-  const pathname = usePathname();
-
-  const createQueryString = useCallback((name: string, value: string) => {
-    const params = new URLSearchParams();
-    params.set(name, value);
-
-    return params.toString();
-  }, []);
 
   return (
     <div className="relative w-[230px] h-full flex items-center">
