@@ -1,16 +1,23 @@
 "use client";
 
+import AsideTitle from "@/components/aside/AsideTitle";
 import Button from "@/components/common/button/Button";
+import Item from "@/components/common/item/Item";
 import Skeleton from "@/components/common/skeleton/Skeleton";
+import Characters from "@/components/movie/Characters";
+import Information from "@/components/movie/Information";
+import Similar from "@/components/movie/Similar";
+import Trailer from "@/components/movie/Trailer";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import React from "react";
-import { FaStar, FaStarHalf, FaStarHalfAlt } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
 import useSWR, { Fetcher } from "swr";
 
 type Props = {};
 
 const Movie = (props: Props) => {
+  const [active, setActive] = useState<number>(0);
   const { id } = useParams();
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
@@ -18,10 +25,11 @@ const Movie = (props: Props) => {
     `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/${id}?language=vi&page=1&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
+
   console.log(movie);
   if (isLoading) return <Skeleton number={1} />;
   return (
-    <main className="pr-5 w-full table-cell align-top">
+    <>
       <article className="relative w-full h-56 md:h-96">
         <figure className="relative w-full h-full">
           <Image
@@ -34,6 +42,7 @@ const Movie = (props: Props) => {
             priority
           />
         </figure>
+
         <div className="absolute top-0 left-0 w-full p-5 flex gap-5 z-10">
           <div className="relative">
             <figure className="relative w-[180px] h-[260px]  rounded-md overflow-hidden">
@@ -112,7 +121,37 @@ const Movie = (props: Props) => {
 
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
       </article>
-    </main>
+
+      <article>
+        <ul className="pt-5 mx-3 flex items-center">
+          {["Thông tin phim", "Nhân vật", "Trailer", "Hình ảnh"].map(
+            (item, index) => (
+              <li
+                key={index}
+                className={`relative text-sm px-1 transition-all duration-200 whitespace-nowrap pb-5 mr-10 hover:cursor-pointer border-b-[3px] border-solid border-transparent ${
+                  active === index &&
+                  "text-accent-green !border-accent-green before:absolute before:-bottom-2 before:left-0 before:right-0 before:border-transparent before:h-0 before:w-0 before:border-solid before:border-l-[5px] before:border-r-[5px] before:border-t-[5px] before:border-t-accent-green before:mx-auto before:content-center"
+                }`}
+                onClick={() => setActive(index)}
+              >
+                {item}
+              </li>
+            )
+          )}
+        </ul>
+        <div className="p-5 bg-[#1f282d] rounded-b-md">
+          {active === 0 && <Information movie={movie} />}
+          {active === 1 && <Characters id={id} />}
+          {active === 2 && <Trailer id={id} />}
+          {active === 3 && (
+            <div className="bg-[#fcf8e3] border-solid border border-[#fcf8e3] rounded-md text-xs p-5 font-semibold text-accent-brown">
+              Phim này không có hình ảnh bổ sung nào!
+            </div>
+          )}
+        </div>
+        <Similar id={id} />
+      </article>
+    </>
   );
 };
 

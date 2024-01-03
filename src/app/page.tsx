@@ -22,7 +22,7 @@ export default function Home() {
     fetcher
   );
   return (
-    <main className="pr-5 w-full table-cell align-top">
+    <>
       <Carousel />
       {now_playing && (
         <Products
@@ -48,6 +48,6 @@ export default function Home() {
           path="popular"
         />
       )}
-    </main>
+    </>
   );
 }

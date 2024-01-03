@@ -24,9 +24,10 @@ export default function RootLayout({
         <main className="bg-[#263238]">
           <Header />
           <Container>
-            <div className="bg-black/60 p-5 table rounded-md">
-              {children}
-
+            <div className="bg-black/60 p-5 table rounded-md w-full">
+              <main className="pr-5 w-full table-cell align-top">
+                {children}
+              </main>
               <Aside />
             </div>
           </Container>

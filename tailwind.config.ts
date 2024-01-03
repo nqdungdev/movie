@@ -25,6 +25,7 @@ const config: Config = {
           yellow: "#f5ec42",
           red: "#e62117",
           green: "#b5e745",
+          brown: "#8a6d3b",
         },
       },
       animation: {
