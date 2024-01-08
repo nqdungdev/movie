@@ -15,36 +15,16 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <footer className="max-w-[1182px] w-full mx-auto">
-      <Container>
-        <div className="bg-black/60 rounded-md px-5 mb-5 h-[65px] flex items-center justify-between">
+      <Container className="pt-0 pb-5">
+        <div className="bg-black/60 lg:rounded-md px-5 mb-5 flex flex-col lg:flex-row lg:h-[65px] items-center justify-between pb-5 lg:pb-0">
           <div className="flex items-center justify-between">
             <figure className="mr-8">
-              <Link href="/" title="Xem film online" rel="home">
+              <Link href="/" title="Xem film online">
                 <p className="font-kolker text-5xl bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-sky-600">
                   Film
                 </p>
               </Link>
             </figure>
-
-            <nav className="Menu">
-              <ul className="flex">
-                <li className="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-home menu-item-490">
-                  <a href="https://animevietsub.fan">XEM PHIM</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-493">
-                  <a href="/yeu-cau-phim.html">YÊU CẦU ANIME</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-493">
-                  <a href="/pages/discord.html">Chat Anime/Discord</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-493">
-                  <a href="/pages/thuat-ngu.html">THUẬT NGỮ</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-493">
-                  <a href="https://fb.com/233536333844133">GROUP THẢO LUẬN</a>
-                </li>
-              </ul>
-            </nav>
           </div>
 
           <ul className="flex gap-1 items-center">

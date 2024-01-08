@@ -29,3 +29,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background: rgb(0 0 0 / 0.3);
+  boder-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e62117;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.2;
+}

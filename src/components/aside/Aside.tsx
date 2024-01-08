@@ -20,9 +20,9 @@ const Aside = (props: Props) => {
     `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/top_rated?language=vi&page=1&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
-  console.log(top_rated);
+
   return (
-    <aside className="max-w-[300px] table-cell align-top">
+    <>
       <section className="p-3 mb-5 bg-[#696969]/10 rounded-md">
         <AsideTitle>Hôm nay xem gì?</AsideTitle>
         <p className="text-sm mb-4">
@@ -61,8 +61,15 @@ const Aside = (props: Props) => {
               )
           )}
 
-          <li>
-            <a href="/anime-moi/">Xem thêm..</a>
+          <li className="hover:border-l-[#be3232] hover:border-l-4 border-solid group p-1">
+            <Link
+              className="flex justify-between items-center"
+              href="/now_playing"
+            >
+              <span className="text-white italic text-right w-1/4 text-xs text-nowrap">
+                Xem thêm...
+              </span>
+            </Link>
           </li>
         </ul>
       </section>
@@ -80,7 +87,7 @@ const Aside = (props: Props) => {
                         #{index + 1}
                       </strong>
                     </span>
-                    <Link href="">
+                    <Link href={`/movie/${movie.id}`}>
                       <div className="relative w-[55px] h-[85px]">
                         <Image
                           fill
@@ -93,7 +100,7 @@ const Aside = (props: Props) => {
                       </div>
                     </Link>
                     <div className="flex flex-col ml-3">
-                      <Link href="">
+                      <Link href={`/movie/${movie.id}`}>
                         <div className="text-sm font-normal text-white group-hover:text-[7d7d7d]">
                           {movie.title}
                         </div>
@@ -116,32 +123,7 @@ const Aside = (props: Props) => {
           )}
         </ul>
       </section>
-
-      <div className="tag-list-main">
-        <ul>
-          <li className="tag-item">
-            <a
-              className="tag-link"
-              title="List anime thể loại Action - Comedy"
-              href="https://animevietsub.fan/danh-sach/all/1-3/all/all/"
-            >
-              List anime thể loại Action - Comedy
-            </a>
-            <span className="tag-end">&nbsp;</span>
-          </li>
-          <li className="tag-item">
-            <a
-              className="tag-link"
-              title="List anime thể loại Action  -Romance"
-              href="https://animevietsub.fan/danh-sach/all/1-24/all/all/"
-            >
-              List anime thể loại Action -Romance
-            </a>
-            <span className="tag-end">&nbsp;</span>
-          </li>
-        </ul>
-      </div>
-    </aside>
+    </>
   );
 };
 

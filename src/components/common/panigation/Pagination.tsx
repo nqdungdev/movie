@@ -34,9 +34,9 @@ const Pagination = ({ totalPage }: Props) => {
                   )}`
                 );
             }}
-            className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight border border-e-0 rounded-s-lg bg-black border-gray-700 hover:bg-gray-900 hover:text-gray-300 text-textColor ${
+            className={`flex items-center justify-center px-3 h-10 m-1 rounded-md bg-[#696969]/20 hover:bg-accent-green hover:text-white text-[#78909c] ${
               page <= 1 &&
-              "!bg-black/40 hover:!bg-black/40 !text-gray-300/40 hover:!text-gray-300/40"
+              "!bg-[#696969]/40 hover:!bg-[#696969]/40 !text-gray-300/40 hover:!text-gray-300/40"
             }`}
             disabled={page <= 1 ? true : false}
           >
@@ -54,10 +54,10 @@ const Pagination = ({ totalPage }: Props) => {
           index + 1 === totalPage ? (
             <li key={index}>
               <button
-                className={`flex items-center justify-center px-3 h-8 leading-tight border  ${
+                className={`flex items-center justify-center w-10 h-10 rounded-md m-1 font-bold ${
                   page === index + 1
-                    ? "hover:text-blue-300 text-blue-400 border border-gray-700 bg-blue-50 hover:bg-blue-100 hover:text-blue-70"
-                    : "bg-black border-gray-700 hover:bg-gray-900 hover:text-gray-300 text-gray"
+                    ? "text-white bg-accent-red"
+                    : "bg-[#696969]/20 hover:bg-accent-green hover:text-white text-[#78909c]"
                 }`}
                 onClick={() => {
                   push(
@@ -87,9 +87,9 @@ const Pagination = ({ totalPage }: Props) => {
                   )}`
                 );
             }}
-            className={`flex items-center justify-center px-3 h-8 me-0 leading-tight border rounded-e-lg bg-black border-gray-700 hover:bg-gray-900 hover:text-gray-300 text-textColor ${
+            className={`flex items-center justify-center px-3 h-10 m-1 rounded-md bg-[#696969]/20 hover:bg-accent-green hover:text-white text-[#78909c] ${
               page >= totalPage &&
-              "!bg-black/40 hover:!bg-black/40 !text-gray-300/40 hover:!text-gray-300/40"
+              "!bg-[#696969]/40 hover:!bg-[#696969]/40 !text-gray-300/40 hover:!text-gray-300/40"
             }`}
             disabled={page >= totalPage ? true : false}
           >

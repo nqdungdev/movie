@@ -17,7 +17,7 @@ const Information = ({ movie }: Props) => {
       <li className="w-1/2 pl-2 py-1">
         <strong>Thể loại: </strong>
         {movie.genres.map((genre: any) => (
-          <Link href={`/genre/${genre.id}`} key={genre.id}>
+          <Link href={`/genre/${genre.id}?name=${genre.name}`} key={genre.id}>
             {genre.name},&nbsp;
           </Link>
         ))}

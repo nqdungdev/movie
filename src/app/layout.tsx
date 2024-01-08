@@ -21,14 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        <main className="bg-[#263238]">
+        <main className="bg-[#263238] h-max">
           <Header />
           <Container>
-            <div className="bg-black/60 p-5 table rounded-md w-full">
-              <main className="pr-5 w-full table-cell align-top">
+            <div className="bg-black/60 p-5 lg:table lg:rounded-md w-full">
+              <main className="lg:pr-5 pb-5 lg:pb-0 w-full lg:table-cell align-top">
                 {children}
               </main>
-              <Aside />
+              <aside className="lg:max-w-[300px] lg:w-[300px] lg:table-cell align-top">
+                <Aside />
+              </aside>
             </div>
           </Container>
           <Footer />

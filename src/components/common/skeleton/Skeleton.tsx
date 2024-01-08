@@ -8,7 +8,7 @@ const Skeleton = ({ number }: Props) => {
       className={`grid grid-cols-1 ${
         number === 1
           ? ""
-          : " gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8"
+          : "gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8"
       }`}
     >
       {[...Array(number)].map((_, index) => (

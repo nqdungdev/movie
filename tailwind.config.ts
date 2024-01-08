@@ -26,6 +26,8 @@ const config: Config = {
           red: "#e62117",
           green: "#b5e745",
           brown: "#8a6d3b",
+          darkRed: "#702526",
+          pink: "#e87d7f",
         },
       },
       animation: {
@@ -42,6 +44,11 @@ const config: Config = {
           "0%": { opacity: "100" },
           "100%": { opacity: "0" },
         },
+      },
+
+      screens: {
+        xs: "576px",
+        lg: "992px",
       },
     },
   },

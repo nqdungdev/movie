@@ -14,6 +14,8 @@ const Characters = ({ id }: Props) => {
     `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/${id}/credits?language=vi&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
+
+  console.log(credits);
   return (
     <ul className="min-h-[320px] h-max w-full flex flex-wrap">
       {credits?.cast.map(

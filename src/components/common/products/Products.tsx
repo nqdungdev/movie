@@ -15,7 +15,7 @@ const Products = ({ limit, movies, title, path }: Props) => {
       <h2 className="bg-secondary p-2 my-5 uppercase w-max rounded-lg">
         {title}
       </h2>
-      <ul className="w-full grid grid-cols-4 gap-5">
+      <ul className="w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-5">
         {movies.map(
           (movie: IMovie, index: number) =>
             index < limit && (

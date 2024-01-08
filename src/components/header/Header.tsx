@@ -16,50 +16,54 @@ const Header = (props: Props) => {
 
   return (
     <header className="h-[60px] bg-black/60" id="header">
-      <Container className="flex items-center justify-between py-0">
-        <div className="flex items-center">
-          <div className="mr-8">
-            <Link href="/">
-              <p className="font-kolker text-5xl bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-sky-600">
-                Film
-              </p>
-            </Link>
-          </div>
-          <nav>
-            <ul className="flex items-center">
-              {["trang chủ", "movie", "thể loại"].map((item, index) => (
-                <li
-                  key={index}
-                  className="relative px-2 before:absolute before:bottom-1 before:left-4 before:right-4 before:bg-accent-green before:h-[3px] group"
-                >
-                  <Link
-                    href="/"
-                    className="text-white uppercase text-sm leading-[60px] font-base"
+      <Container className="!p-0">
+        <div className="flex items-center justify-between px-5">
+          <div className="flex items-center">
+            <div className="mr-8">
+              <Link href="/">
+                <p className="font-kolker text-5xl bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-sky-600">
+                  Film
+                </p>
+              </Link>
+            </div>
+            <nav>
+              <ul className="flex items-center">
+                {["trang chủ", "thể loại"].map((item, index) => (
+                  <li
+                    key={index}
+                    className={`relative px-2 before:absolute before:bottom-1 before:left-4 before:right-4 ${
+                      index === 0 && "before:bg-accent-green before:h-[3px]"
+                    } group`}
                   >
-                    {item}
-                  </Link>
-                  {index === 2 && (
-                    <ul className="absolute border-t-4 border-solid border-t-accent-green w-[400px] bg-white top-full left-4 z-20 flex-wrap before:absolute before:-top-2 before:left-4 before:border-transparent before:h-0 before:w-0 before:border-solid before:border-l-[5px] before:border-r-[5px] before:border-b-[5px] before:border-b-accent-green before:mx-auto before:content-center transition-all !duration-100 hidden animate-fadeOut group-hover:flex group-hover:animate-fadeIn">
-                      {data?.genres?.map((genre: any) => (
-                        <li key={genre.id} className="w-1/3 text-xs py-2">
-                          <Link
-                            href={`/genre/${genre.id}`}
-                            className="text-[#333] px-4 line-clamp-1 overflow-hidden font-semibold hover:text-[#7d7d7d]"
-                            title={genre.name}
-                          >
-                            {genre.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+                    <Link
+                      href={"/"}
+                      className="text-white uppercase text-sm leading-[60px] font-base"
+                    >
+                      {item}
+                    </Link>
+                    {index === 1 && (
+                      <ul className="absolute border-t-4 border-solid border-t-accent-green w-[400px] bg-white top-full left-4 z-20 flex-wrap before:absolute before:-top-2 before:left-4 before:border-transparent before:h-0 before:w-0 before:border-solid before:border-l-[5px] before:border-r-[5px] before:border-b-[5px] before:border-b-accent-green before:mx-auto before:content-center transition-all !duration-100 hidden animate-fadeOut group-hover:flex group-hover:animate-fadeIn">
+                        {data?.genres?.map((genre: any) => (
+                          <li key={genre.id} className="w-1/3 text-xs py-2">
+                            <Link
+                              href={`/genre/${genre.id}?name=${genre.name}`}
+                              className="text-[#333] px-4 line-clamp-1 overflow-hidden font-semibold hover:text-[#7d7d7d]"
+                              title={genre.name}
+                            >
+                              {genre.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
 
-        <SearchBox />
+          <SearchBox />
+        </div>
       </Container>
     </header>
   );

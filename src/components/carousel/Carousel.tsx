@@ -32,22 +32,19 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full">
-      <div
-        ref={moviesRef}
-        className="relative h-56 overflow-hidden rounded-lg md:h-96"
-      >
+      <div ref={moviesRef} className="relative">
         {popular?.results.map(
           (movie: any, index: number) =>
             index <= LIMIT && (
               <div
                 key={movie.id}
-                className={`relative w-full h-full duration-700 ease-in-out ${
+                className={`relative w-full h-full duration-700 ease-in-out rounded-lg overflow-hidden ${
                   current === index
                     ? "block animate-fadeIn"
                     : "hidden animate-fadeOut"
                 }`}
               >
-                <figure className="relative w-full h-full">
+                <figure className="relative w-full h-[350px]">
                   <Image
                     fill
                     sizes="80vw"
@@ -58,7 +55,8 @@ const Carousel = () => {
                     priority
                   />
                 </figure>
-                <div className="absolute top-0 left-0 w-1/2 min-w-[450px] h-full p-5 bg-black/40">
+
+                <div className="lg:absolute lg:top-0 lg:left-0 lg:w-1/2 lg:min-w-[450px] h-full p-5 bg-black/40">
                   <Link
                     href={`/movie/${movie.id}`}
                     className="mb-3 font-semibold text-white text-3xl"
@@ -76,7 +74,7 @@ const Carousel = () => {
                       {movie.release_date}
                     </span>
                   </p>
-                  <p className="text-xs text-white mb-3 line-clamp-[10]">
+                  <p className="text-xs text-white mb-3 line-clamp-2 lg:line-clamp-[10]">
                     {movie.overview}
                   </p>
 
@@ -91,14 +89,14 @@ const Carousel = () => {
         )}
       </div>
 
-      <div className="absolute z-30 flex bottom-5 right-5 space-x-3">
+      <div className="absolute z-30 flex top-[330px] lg:top-auto lg:bottom-5 right-5 space-x-2 lg:space-x-3">
         {popular?.results.map(
           (movie: any, index: number) =>
             index <= LIMIT && (
               <button
                 key={movie.id}
                 type="button"
-                className={`w-3 h-3 rounded-full ${
+                className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full ${
                   current === index
                     ? "bg-accent-red opacity-100"
                     : "bg-white opacity-20"
