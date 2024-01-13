@@ -1,12 +1,23 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "../common/container/Container";
 import SearchBox from "./SearchBox";
 import useSWR, { Fetcher } from "swr";
+import Button from "../common/button/Button";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "@/firebase/config";
+import Image from "next/image";
+import { AuthContext } from "@/context/AuthContext";
+
 type Props = {};
 
 const Header = (props: Props) => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const [toggle, setToggle] = useState<boolean>(false);
+  const router = useRouter();
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
   const { data, isLoading } = useSWR(
@@ -14,6 +25,9 @@ const Header = (props: Props) => {
     fetcher
   );
 
+  const handleLogout = () => {
+    signOut(auth);
+  };
   return (
     <header className="h-[60px] bg-black/60" id="header">
       <Container className="!p-0">
@@ -62,7 +76,41 @@ const Header = (props: Props) => {
             </nav>
           </div>
 
-          <SearchBox />
+          <div className="flex items-center gap-2">
+            <SearchBox />
+
+            {user.uid ? (
+              <div className="relative" onClick={() => setToggle(!toggle)}>
+                <figure className="relative h-10 w-10">
+                  <Image
+                    fill
+                    sizes="10vw"
+                    src={`/images/user-image.webp`}
+                    alt="avatar"
+                    title="avatar"
+                    style={{ objectFit: "cover" }}
+                  />
+                </figure>
+                {toggle && (
+                  <ul className="w-[200px] bg-[#263238] rounded-md absolute top-full right-0 transition-all duration-200 pb-4 pt-2 mt-1 before:absolute before:-top-1 before:right-4 before:border-transparent before:h-0 before:w-0 before:border-solid before:border-l-[5px] before:border-r-[5px] before:border-b-[5px] before:border-b-[#263238] before:mx-auto before:content-center z-20">
+                    <li className="hover:bg-[#374850]">
+                      <Link
+                        href="#"
+                        className="text-white text-xs block py-3 px-4 opacity-50"
+                        onClick={handleLogout}
+                      >
+                        Thoát
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            ) : (
+              <Button className="!h-10" onClick={() => router.push("/login")}>
+                Đăng nhập
+              </Button>
+            )}
+          </div>
         </div>
       </Container>
     </header>

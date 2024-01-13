@@ -5,11 +5,15 @@ import AsideTitle from "./AsideTitle";
 import Link from "next/link";
 import useSWR, { Fetcher } from "swr";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const Aside = (props: Props) => {
   const LIMIT = 9;
+
+  const router = useRouter();
+
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
   const { data: now_playing } = useSWR(
@@ -29,7 +33,15 @@ const Aside = (props: Props) => {
           Nếu bạn buồn phiền không biết xem gì hôm nay. Hãy để chúng tôi chọn
           cho bạn
         </p>
-        <Button>
+        <Button
+          onClick={() =>
+            router.push(
+              `/movie/${
+                now_playing?.results[Math.floor(Math.random() * 20) + 1].id
+              }`
+            )
+          }
+        >
           <p>
             Xem Film <strong>Ngẫu Nhiên</strong>
           </p>
