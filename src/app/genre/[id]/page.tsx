@@ -2,15 +2,13 @@
 
 import Breadcrumb from "@/components/common/breadcrumb/Breadcrumb";
 import Item from "@/components/common/item/Item";
-import Pagination from "@/components/common/panigation/Pagination";
+import Pagination from "@/components/common/pagination/Pagination";
 import Skeleton from "@/components/common/skeleton/Skeleton";
 import { useParams, useSearchParams } from "next/navigation";
 import React from "react";
 import useSWR, { Fetcher } from "swr";
 
-type Props = {};
-
-const SeeMore = (props: Props) => {
+const Genre = () => {
   const params = useParams();
   const searchParams = useSearchParams();
 
@@ -35,8 +33,8 @@ const SeeMore = (props: Props) => {
       {
         <div className="mb-12">
           <span className="flex items-center justify-center text-base uppercase font-medium py-0 px-5 h-10 w-max bg-accent-green text-[#333] rounded-md mb-2">
-            Danh sách tất cả film theo thể loại:
-            {searchParams.get("name") || "Action"}
+            Danh sách tất cả film theo thể loại:&nbsp;
+            <span>{searchParams.get("name") || "Action"}</span>
           </span>
         </div>
       }
@@ -52,4 +50,4 @@ const SeeMore = (props: Props) => {
   );
 };
 
-export default SeeMore;
+export default Genre;

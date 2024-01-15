@@ -2,7 +2,7 @@
 
 import Breadcrumb from "@/components/common/breadcrumb/Breadcrumb";
 import Item from "@/components/common/item/Item";
-import Pagination from "@/components/common/panigation/Pagination";
+import Pagination from "@/components/common/pagination/Pagination";
 import Skeleton from "@/components/common/skeleton/Skeleton";
 import { Slug } from "@/types/const";
 import { useParams, usePathname, useSearchParams } from "next/navigation";

@@ -13,8 +13,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "@/context/AuthContext";
 
 export interface LoginValues {
   email: string;

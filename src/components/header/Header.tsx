@@ -15,7 +15,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   const [toggle, setToggle] = useState<boolean>(false);
   const router = useRouter();
   const fetcher: Fetcher<any, string> = (url) =>

@@ -8,32 +8,30 @@ import Information from "@/components/movie/Information";
 import Similar from "@/components/movie/Similar";
 import Trailer from "@/components/movie/Trailer";
 import Watch from "@/components/movie/watch/Watch";
-import { useParams } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import useSWR, { Fetcher } from "swr";
+type Props = {
+  params: { id: string };
+};
 
-type Props = {};
-
-const Movie = (props: Props) => {
+const Movie = ({ params }: Props) => {
   const [active, setActive] = useState<number>(0);
   const [watch, setWatch] = useState<boolean>(false);
-  const { id } = useParams();
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
   const { data: movie, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/${id}?language=vi&page=1&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+    `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/${params.id}?language=vi&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
-  console.log(movie);
   if (isLoading) return <Skeleton number={1} />;
   return (
     <>
       <Breadcrumb
         genres={movie.genres}
         movie={{ id: movie.id, name: movie.title }}
-        last="Thông tin"
+        last={`${watch ? "Xem phim" : "Thông tin"}`}
       />
-      {watch && <Watch id={id} />}
+      {watch && <Watch id={params.id} />}
       <Banner movie={movie} watchProps={[watch, setWatch]} />
       {!watch && (
         <article>
@@ -56,8 +54,8 @@ const Movie = (props: Props) => {
 
           <div className="p-5 bg-[#1f282d] rounded-b-md">
             {active === 0 && <Information movie={movie} />}
-            {active === 1 && <Characters id={id} />}
-            {active === 2 && <Trailer id={id} />}
+            {active === 1 && <Characters id={params.id} />}
+            {active === 2 && <Trailer id={params.id} />}
             {active === 3 && (
               <div className="bg-[#fcf8e3] border-solid border border-[#fcf8e3] rounded-md text-xs p-5 font-semibold text-accent-brown">
                 Phim này không có hình ảnh bổ sung nào!
@@ -66,7 +64,7 @@ const Movie = (props: Props) => {
           </div>
         </article>
       )}
-      <Similar id={id} />
+      <Similar id={params.id} />
     </>
   );
 };

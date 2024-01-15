@@ -1,11 +1,8 @@
 import ProtectedRoute from "@/components/protected/ProtectedRoute";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { default: "Film", template: "Film | %s" },
+  title: { template: "", absolute: "%s" },
   description: "",
 };
 
