@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -18,4 +18,4 @@ export const analytics =
   typeof window !== "undefined" ? getAnalytics(app) : null;
 
 export const auth = getAuth(app);
-export const db = getFirestore();
+export const storage = getStorage();

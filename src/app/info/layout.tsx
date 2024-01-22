@@ -1,19 +1,18 @@
-import ProtectedRoute from "@/components/protected/ProtectedRoute";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { template: "", absolute: "%s" },
+  title: { absolute: "Thông tin tài khoản" },
   description: "",
 };
 
-export default function AuthLayout({
+export default function InfoLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <main className="bg-[#263238] flex flex-col items-center p-5">
-      <ProtectedRoute>{children}</ProtectedRoute>
+      {children}
     </main>
   );
 }

@@ -6,7 +6,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from "next/link";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "@/firebase/config";
 import { useState } from "react";
 
@@ -53,7 +57,14 @@ const Register = (props: Props) => {
 
   const onSubmit: SubmitHandler<RegisterValues> = async (values) => {
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      ).then((res) =>
+        updateProfile(res.user, { displayName: values.username })
+      );
+
       setIsSuccess(true);
       setTimeout(() => router.push("/login"), 2000);
     } catch (error: any) {
