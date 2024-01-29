@@ -17,7 +17,7 @@ const Similar = ({ id }: Props) => {
   return (
     <section className="p-3 mt-5 mb-5 bg-[#696969]/10 rounded-md">
       <AsideTitle>Phim liên quan</AsideTitle>
-      <ul className="w-full grid grid-cols-4 gap-5">
+      <ul className="w-full grid grid-cols-2 xs:grid-cols-4 gap-5">
         {similar.results.map(
           (movie: IMovie, index: number) =>
             index < 4 && (

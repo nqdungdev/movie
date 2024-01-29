@@ -28,7 +28,7 @@ const SearchBox = (props: Props) => {
   const { push } = useRouter();
 
   return (
-    <div className="relative w-[230px] h-full flex items-center">
+    <div className="relative w-auto xs:w-[230px] h-full flex items-center">
       <Link
         href={{
           pathname: "/search",

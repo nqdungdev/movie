@@ -5,7 +5,7 @@ import Item from "@/components/common/item/Item";
 import Pagination from "@/components/common/pagination/Pagination";
 import Skeleton from "@/components/common/skeleton/Skeleton";
 import { Slug } from "@/types/const";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { notFound, useParams, useSearchParams } from "next/navigation";
 import React from "react";
 import useSWR, { Fetcher } from "swr";
 
@@ -33,8 +33,7 @@ const SeeMore = (props: Props) => {
   ): type is T {
     return Object.values(type).includes(value);
   }
-  if (!isInstance(params.slug, Slug)) return;
-
+  if (!isInstance(params.slug, Slug)) return notFound();
   const title =
     isInstance(params.slug, Slug) && params.slug === "now_playing"
       ? "Danh sách film mới cập nhật"

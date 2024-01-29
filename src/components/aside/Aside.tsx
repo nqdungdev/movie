@@ -78,7 +78,7 @@ const Aside = (props: Props) => {
               className="flex justify-between items-center"
               href="/now_playing"
             >
-              <span className="text-white italic text-right w-1/4 text-xs text-nowrap">
+              <span className="text-white italic text-left w-1/4 text-xs text-nowrap">
                 Xem thêm...
               </span>
             </Link>
@@ -90,7 +90,7 @@ const Aside = (props: Props) => {
 
         <ul>
           {top_rated?.results.map(
-            (movie: any, index: number) =>
+            (movie: IMovie, index: number) =>
               index <= LIMIT / 2 && (
                 <li key={movie.id} className="relative mb-5 group">
                   <div className="min-h-[85px] flex items-center">

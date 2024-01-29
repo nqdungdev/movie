@@ -4,10 +4,12 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import useSWR, { Fetcher } from "swr";
 import Button from "../common/button/Button";
+import { useRouter } from "next/navigation";
 
 const Carousel = () => {
   const LIMIT = 9;
   const [current, setCurrent] = useState(0);
+  const router = useRouter();
   const moviesRef = useRef<HTMLDivElement>(null);
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
@@ -19,6 +21,7 @@ const Carousel = () => {
   useEffect(() => {
     const next = (current + 1) % LIMIT;
     const id = setTimeout(() => handleShowSlides(next), 5000);
+
     return () => clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
@@ -34,7 +37,7 @@ const Carousel = () => {
     <div className="relative w-full">
       <div ref={moviesRef} className="relative">
         {popular?.results.map(
-          (movie: any, index: number) =>
+          (movie: IMovie, index: number) =>
             index <= LIMIT && (
               <div
                 key={movie.id}
@@ -78,7 +81,7 @@ const Carousel = () => {
                     {movie.overview}
                   </p>
 
-                  <Button>
+                  <Button onClick={() => router.push(`/movie/${movie.id}`)}>
                     <p>
                       Xem <strong>Phim</strong>
                     </p>

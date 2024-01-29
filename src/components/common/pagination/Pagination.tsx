@@ -49,9 +49,7 @@ const Pagination = ({ totalPage }: Props) => {
           index + 1 === page - 1 ||
           index + 1 === page ||
           index + 1 === page + 1 ||
-          index + 1 === page + 2 ||
-          index + 1 === totalPage / 2 ||
-          index + 1 === totalPage ? (
+          index + 1 === page + 2 ? (
             <li key={index}>
               <button
                 className={`flex items-center justify-center w-10 h-10 rounded-md m-1 font-bold ${

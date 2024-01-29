@@ -26,27 +26,29 @@ const Banner = ({ movie, watchProps }: Props) => {
         />
       </figure>
 
-      <div className="absolute top-0 left-0 w-full p-5 flex flex-col lg:flex-row gap-5 z-10">
-        <Link
-          href="#watch"
-          className="relative group"
-          onClick={() => setWatch(true)}
-        >
-          <figure className="relative w-[180px] h-[260px]  rounded-md overflow-hidden hover:cursor-pointer">
-            <Image
-              fill
-              sizes="20vw"
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt={movie.title}
-              title={movie.title}
-              style={{ objectFit: "cover" }}
-            />
-            <Button className="absolute bottom-5 left-0 w-full rounded-none uppercase text-3xl hover:bg-secondary opacity-80">
-              Xem phim
-            </Button>
-            <div className="absolute top-0 left-0 w-full h-full group-hover:bg-black/50 transition-all duration-300"></div>
-          </figure>
-        </Link>
+      <div className="absolute top-0 left-0 w-full h-full p-5 flex flex-col lg:flex-row gap-5 z-10">
+        <div className="w-full flex justify-center">
+          <Link
+            href="#watch"
+            className="relative group w-max"
+            onClick={() => setWatch(true)}
+          >
+            <figure className="relative w-[180px] h-[260px] rounded-md overflow-hidden hover:cursor-pointer">
+              <Image
+                fill
+                sizes="20vw"
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt={movie.title}
+                title={movie.title}
+                style={{ objectFit: "cover" }}
+              />
+              <Button className="absolute bottom-5 left-0 w-full rounded-none uppercase text-3xl hover:bg-secondary opacity-80">
+                Xem phim
+              </Button>
+              <div className="absolute top-0 left-0 w-full h-full group-hover:bg-black/50 transition-all duration-300"></div>
+            </figure>
+          </Link>
+        </div>
 
         <div>
           <div className="min-h-[200px]">

@@ -1,13 +1,10 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { Slug } from "@/types/const";
 type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   function isInstance<T extends object>(
     value: string | string[] | number,
     type: T
@@ -22,16 +19,10 @@ export async function generateMetadata(
       ? "Danh sách film sắp chiếu"
       : params.slug === "popular"
       ? "Danh sách film phổ biến"
-      : "";
-
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
+      : "Không tìm thấy kết quả";
 
   return {
-    title: title || " Not found",
-    openGraph: {
-      images: ["/images/vercel.svg", ...previousImages],
-    },
+    title: title || "Không tìm thấy kết quả",
   };
 }
 

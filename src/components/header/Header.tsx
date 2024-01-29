@@ -10,14 +10,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/firebase/config";
 import Image from "next/image";
 import { AuthContext } from "@/context/AuthContext";
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
+import Aside from "./Aside";
 
 type Props = {};
 
 const Header = (props: Props) => {
   const user = useContext(AuthContext);
-
   const [toggle, setToggle] = useState<boolean>(false);
+  const [showAside, setShowAside] = useState<boolean>(false);
   const router = useRouter();
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
@@ -31,7 +32,7 @@ const Header = (props: Props) => {
     router.push("/");
   };
   return (
-    <header className="h-[60px] bg-black/60" id="header">
+    <header className="h-[60px] bg-black/60 flex items-center" id="header">
       <Container className="!p-0">
         <div className="flex items-center justify-between px-5">
           <div className="flex items-center">
@@ -42,7 +43,7 @@ const Header = (props: Props) => {
                 </p>
               </Link>
             </div>
-            <nav>
+            <nav className="hidden lg:block">
               <ul className="flex items-center">
                 {["trang chủ", "thể loại"].map((item, index) => (
                   <li
@@ -83,7 +84,7 @@ const Header = (props: Props) => {
 
             {user?.uid ? (
               <div
-                className="relative flex items-center gap-1 cursor-pointer group"
+                className="relative hidden lg:flex items-center gap-1 cursor-pointer group"
                 onClick={() => setToggle(!toggle)}
               >
                 <figure className="relative h-10 w-10 rounded-full overflow-hidden">
@@ -128,13 +129,28 @@ const Header = (props: Props) => {
                 )}
               </div>
             ) : (
-              <Button className="!h-10" onClick={() => router.push("/login")}>
+              <Button
+                className="!h-10 !hidden lg:!flex"
+                onClick={() => router.push("/login")}
+              >
                 Đăng nhập
               </Button>
             )}
+
+            <Button
+              className="lg:!hidden !w-11 !h-11 !p-0 z-50"
+              onClick={() => setShowAside(!showAside)}
+            >
+              {showAside ? (
+                <FaTimes className="text-white !text-lg" />
+              ) : (
+                <FaBars className="text-white !text-lg" />
+              )}
+            </Button>
           </div>
         </div>
       </Container>
+      {showAside && <Aside data={data} />}
     </header>
   );
 };

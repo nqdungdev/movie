@@ -15,13 +15,12 @@ const Characters = ({ id }: Props) => {
     fetcher
   );
 
-  console.log(credits);
   return (
     <ul className="min-h-[320px] h-max w-full flex flex-wrap">
       {credits?.cast.map(
         (actor: any, index: number) =>
           index < 10 && (
-            <li key={actor.id} className="w-1/5">
+            <li key={actor.id} className="w-1/3 xs:w-1/5">
               <Link
                 href="/"
                 title={actor.name}

@@ -33,6 +33,10 @@ const config: Config = {
       animation: {
         fadeIn: "fadeIn 1s ease-in-out",
         fadeOut: "fadeOut 1s ease-in-out",
+        slideDown: "slideDown 1s ease-in-out",
+        slideUp: "slideUp 1s ease-in-out",
+        funnyText: "funnyText 4s ease-in-out infinite",
+        scanLine: "scanLine 8s linear infinite",
       },
 
       keyframes: {
@@ -43,6 +47,52 @@ const config: Config = {
         fadeOut: {
           "0%": { opacity: "100" },
           "100%": { opacity: "0" },
+        },
+        slideDown: {
+          from: {
+            transform: "translateY(-100%)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
+        slideUp: {
+          from: {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+          to: {
+            transform: "translateY(-100%)",
+            opacity: "0",
+          },
+        },
+        funnyText: {
+          "0%": {
+            color: "rgba(0, 0, 0, 0.3)",
+            filter: " blur(3px)",
+          },
+          "30%": {
+            color: "rgba(0, 0, 0, 0.5)",
+            filter: "blur(1px)",
+          },
+          "65%": {
+            color: "rgba(0, 0, 0, 0.2)",
+            filter: "blur(5px)",
+          },
+          "100%": {
+            color: "rgba(0, 0, 0, 0.3)",
+            filter: "blur(3px)",
+          },
+        },
+        scanLine: {
+          "0%": {
+            top: "-5px",
+          },
+          "100%": {
+            top: "100%",
+          },
         },
       },
 

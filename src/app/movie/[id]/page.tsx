@@ -8,6 +8,7 @@ import Information from "@/components/movie/Information";
 import Similar from "@/components/movie/Similar";
 import Trailer from "@/components/movie/Trailer";
 import Watch from "@/components/movie/watch/Watch";
+import { notFound } from "next/navigation";
 import { useState } from "react";
 import useSWR, { Fetcher } from "swr";
 type Props = {
@@ -19,11 +20,20 @@ const Movie = ({ params }: Props) => {
   const [watch, setWatch] = useState<boolean>(false);
   const fetcher: Fetcher<any, string> = (url) =>
     fetch(url).then((res) => res.json());
-  const { data: movie, isLoading } = useSWR(
+  const {
+    data: movie,
+    isLoading,
+    error,
+  } = useSWR(
     `${process.env.NEXT_PUBLIC_TMDB_URL}/movie/${params.id}?language=vi&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     fetcher
   );
+
+  console.log(movie);
+  console.log(error);
+
   if (isLoading) return <Skeleton number={1} />;
+  // if (error || !movie?.success) return notFound();
   return (
     <>
       <Breadcrumb
@@ -35,7 +45,7 @@ const Movie = ({ params }: Props) => {
       <Banner movie={movie} watchProps={[watch, setWatch]} />
       {!watch && (
         <article>
-          <ul className="pt-5 mx-3 flex items-center">
+          <ul className="pt-5 mx-3 flex items-center flex-wrap">
             {["Thông tin phim", "Nhân vật", "Trailer", "Hình ảnh"].map(
               (item, index) => (
                 <li
