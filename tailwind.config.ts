@@ -37,6 +37,8 @@ const config: Config = {
         slideUp: "slideUp 1s ease-in-out",
         funnyText: "funnyText 4s ease-in-out infinite",
         scanLine: "scanLine 8s linear infinite",
+        flicker: "flicker 1s linear infinite",
+        flickerLamp: "flickerLamp 2s linear infinite",
       },
 
       keyframes: {
@@ -93,6 +95,30 @@ const config: Config = {
           "100%": {
             top: "100%",
           },
+        },
+        flicker: {
+          "0%": { background: "rgba(255, 255, 255, 1)" },
+          "100%": { background: "transparent" },
+        },
+        flickerLamp: {
+          "0%": {
+            background: "rgba(255, 255, 255, 1)",
+            boxShadow:
+              "0px 2px 10px rgba(255, 255, 255, 0.8), 0px 5px 50px rgba(255, 255, 255, 0.8), 0px 8px 80px rgba(255, 255, 255, 0.6), 0px 8px 120px rgba(255, 255, 255, 0.6)",
+          },
+          "50%": { background: "rgba(255, 255, 255, 0.5)", boxShadow: "none" },
+          "70%": {
+            background: "rgba(255, 255, 255, 1)",
+            boxShadow:
+              "0px 2px 10px rgba(255, 255, 255, 0.8), 0px 5px 50px rgba(255, 255, 255, 0.8), 0px 8px 80px rgba(255, 255, 255, 0.6), 0px 8px 120px rgba(255, 255, 255, 0.6)",
+          },
+          "80%": { background: "rgba(255, 255, 255, 0.5)", boxShadow: "none" },
+          "90%": {
+            background: "rgba(255, 255, 255, 1)",
+            boxShadow:
+              "0px 2px 10px rgba(255, 255, 255, 0.8), 0px 5px 50px rgba(255, 255, 255, 0.8), 0px 8px 80px rgba(255, 255, 255, 0.6), 0px 8px 120px rgba(255, 255, 255, 0.6)",
+          },
+          "100%": { background: "rgba(255, 255, 255, 0.5)", boxShadow: "none" },
         },
       },
 

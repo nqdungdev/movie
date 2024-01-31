@@ -32,9 +32,9 @@ export default function NotFound() {
         </svg>
       </div>
       <div className="">
-        <h1 className="text-black/30 filter blur-sm text-[16rem] font-bold animate-funnyText">
+        <h2 className="text-black/30 filter blur-sm text-[16rem] font-bold animate-funnyText">
           404
-        </h1>
+        </h2>
 
         <p className="text-4xl text-black/60 font-semibold text-center uppercase animate-funnyText">
           PAGE NOT FOUND.

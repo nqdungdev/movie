@@ -74,7 +74,7 @@ const Watch = ({ id }: Props) => {
               onClick={(event: MouseEvent) => handleClick(event)}
             >
               {item.icon}
-              <span className="text-[#dadada]">{item.label}</span>
+              {item.label}
             </li>
           ))}
         </ul>

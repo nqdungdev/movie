@@ -29,11 +29,8 @@ const Movie = ({ params }: Props) => {
     fetcher
   );
 
-  console.log(movie);
-  console.log(error);
-
   if (isLoading) return <Skeleton number={1} />;
-  // if (error || !movie?.success) return notFound();
+  if (error || !movie?.success) return notFound();
   return (
     <>
       <Breadcrumb
